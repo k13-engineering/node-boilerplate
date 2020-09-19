@@ -1,0 +1,32 @@
+{
+  "name": "boilerplate",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Boilerplate project",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "c8 --reporter lcov --reporter html --reporter text --all mocha",
+    "eslint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k13-engineering/node-boilerplate.git"
+  },
+  "keywords": [
+    "node",
+    "boilerplate"
+  ],
+  "author": "Simon Kadisch",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/k13-engineering/node-boilerplate/issues"
+  },
+  "homepage": "https://github.com/k13-engineering/node-boilerplate#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "c8": "^7.3.0",
+    "eslint": "^7.9.0",
+    "mocha": "^8.1.3"
+  }
+}
