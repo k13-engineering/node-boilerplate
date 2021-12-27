@@ -1,15 +1,16 @@
 {
-  "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 8,
-    "sourceType": "module"
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "requireConfigFile": false
   },
   "env": {
     "node": true,
-    "es6": true
+    "es2020": true
   },
   "rules": {
-    "global-require": "off"
+    "global-require": "off",
+    "quote-props": ["warn", "consistent-as-needed"]
   },
   "extends": "eslint:recommended"
 }
