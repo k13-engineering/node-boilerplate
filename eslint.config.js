@@ -1,111 +1,122 @@
 /* c8 ignore start */
-export default {
-  rules: {
-    "global-require": "off",
-    "quote-props": ["warn", "consistent-as-needed"],
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
 
-    "quotes": ["error", "double", {
-      allowTemplateLiterals: true,
-    }],
+export default tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    rules: {
+      "global-require": "off",
+      "quote-props": ["warn", "consistent-as-needed"],
 
-    "no-plusplus": "error",
-    "no-nested-ternary": "error",
-    "no-multiple-empty-lines": "error",
-    "no-inline-comments": "error",
-    "no-lonely-if": "error",
-    "no-array-constructor": "error",
-    "no-delete-var": "error",
-    "no-param-reassign": "error",
-    "no-return-assign": "error",
-    "no-import-assign": "error",
-    "no-multi-assign": "error",
-    "keyword-spacing": "error",
+      "quotes": ["error", "double", {
+        allowTemplateLiterals: true,
+      }],
 
-    "max-len": ["warn", {
-      code: 140,
-    }],
+      "no-plusplus": "error",
+      "no-nested-ternary": "error",
+      "no-multiple-empty-lines": "error",
+      "no-inline-comments": "error",
+      "no-lonely-if": "error",
+      "no-array-constructor": "error",
+      "no-delete-var": "error",
+      "no-param-reassign": "error",
+      "no-return-assign": "error",
+      "no-import-assign": "error",
+      "no-multi-assign": "error",
+      "keyword-spacing": "error",
 
-    "max-params": ["error", 4],
-    "max-statements": ["error", 15],
-    "no-loss-of-precision": "error",
-    "no-unreachable-loop": "error",
-    "require-atomic-updates": "error",
-    "complexity": ["error", 4],
+      "max-len": ["warn", {
+        code: 140,
+      }],
 
-    "max-statements-per-line": ["error", {
-      max: 1,
-    }],
+      "max-params": ["error", 4],
+      "max-statements": ["error", 15],
+      "no-loss-of-precision": "error",
+      "no-unreachable-loop": "error",
+      "require-atomic-updates": "error",
+      "complexity": ["error", 4],
 
-    "no-tabs": "error",
-    "no-underscore-dangle": "error",
-    "no-negated-condition": "error",
-    "no-use-before-define": "error",
-    "no-shadow": "error",
-    "no-labels": "error",
-    "no-throw-literal": "error",
-    "default-case": "error",
-    "default-case-last": "error",
-    "no-caller": "error",
-    "no-eval": "error",
-    "no-implied-eval": "error",
-    "no-new": "error",
-    "no-new-func": "error",
-    "no-new-object": "error",
-    "no-new-wrappers": "error",
-    "no-useless-concat": "error",
+      "max-statements-per-line": ["error", {
+        max: 1,
+      }],
 
-    "no-unused-vars": ["error", {
-      ignoreRestSiblings: true,
-    }],
+      "no-tabs": "error",
+      "no-underscore-dangle": "error",
+      "no-negated-condition": "error",
+      "no-use-before-define": "error",
+      "no-shadow": "error",
+      "no-labels": "error",
+      "no-throw-literal": "error",
+      "default-case": "error",
+      "default-case-last": "error",
+      "no-caller": "error",
+      "no-eval": "error",
+      "no-implied-eval": "error",
+      "no-new": "error",
+      "no-new-func": "error",
+      "no-new-object": "error",
+      "no-new-wrappers": "error",
+      "no-useless-concat": "error",
 
-    "array-bracket-newline": ["error", "consistent"],
-    "func-names": ["error", "never"],
+      "no-unused-vars": ["error", {
+        ignoreRestSiblings: true,
+      }],
 
-    "func-style": ["error", "expression", {
-      allowArrowFunctions: true,
-    }],
+      "array-bracket-newline": ["error", "consistent"],
+      "func-names": ["error", "never"],
 
-    "max-depth": ["error", 4],
-    "arrow-parens": "error",
-    "no-confusing-arrow": "error",
-    "prefer-const": "error",
-    "rest-spread-spacing": ["error", "never"],
-    "template-curly-spacing": ["error", "never"],
-    "prefer-rest-params": "error",
-    "prefer-spread": "error",
-    "prefer-template": "error",
-    "object-shorthand": ["error", "properties"],
-    "no-var": "error",
-    "no-useless-computed-key": "error",
-    "array-callback-return": "error",
-    "consistent-return": "error",
-    "dot-notation": "error",
-    "eqeqeq": "error",
-    "no-eq-null": "error",
-    "no-implicit-coercion": "error",
-    "no-multi-spaces": "error",
-    "no-proto": "error",
-    "yoda": "error",
-    "indent": ["error", 2],
-    "object-curly-spacing": ["error", "always"],
+      "func-style": ["error", "expression", {
+        allowArrowFunctions: true,
+      }],
 
-    "object-curly-newline": ["error", {
-      consistent: true,
-      multiline: true,
-    }],
+      "max-depth": ["error", 4],
+      "arrow-parens": "error",
+      "no-confusing-arrow": "error",
+      "prefer-const": "error",
+      "rest-spread-spacing": ["error", "never"],
+      "template-curly-spacing": ["error", "never"],
+      "prefer-rest-params": "error",
+      "prefer-spread": "error",
+      "prefer-template": "error",
+      "object-shorthand": ["error", "properties"],
+      "no-var": "error",
+      "no-useless-computed-key": "error",
+      "array-callback-return": "error",
+      "consistent-return": "error",
+      "dot-notation": "error",
+      "eqeqeq": "error",
+      "no-eq-null": "error",
+      "no-implicit-coercion": "error",
+      "no-multi-spaces": "error",
+      "no-proto": "error",
+      "yoda": "error",
+      "indent": ["error", 2],
+      "object-curly-spacing": ["error", "always"],
 
-    "space-before-blocks": "error",
-    "space-before-function-paren": ["error", "always"],
-    "spaced-comment": "error",
-    "no-whitespace-before-property": "error",
+      "object-curly-newline": ["error", {
+        consistent: true,
+        multiline: true,
+      }],
 
-    "brace-style": ["error", "1tbs", {
-      allowSingleLine: false,
-    }],
+      "space-before-blocks": "error",
+      "space-before-function-paren": ["error", "always"],
+      "spaced-comment": "error",
+      "no-whitespace-before-property": "error",
 
-    "eol-last": ["error", "always"],
-    "func-call-spacing": ["error", "never"],
-    "semi": ["error", "always"],
-  },
-};
+      "brace-style": ["error", "1tbs", {
+        allowSingleLine: false,
+      }],
+
+      "eol-last": ["error", "always"],
+      "func-call-spacing": ["error", "never"],
+      "semi": ["error", "always"],
+    },
+
+    ignores: [
+      "dist/**/*"
+    ]
+  }
+);
 /* c8 ignore stop */

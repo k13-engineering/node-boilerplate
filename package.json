@@ -27,13 +27,17 @@
   },
   "homepage": "https://github.com/k13-engineering/node-boilerplate#readme",
   "devDependencies": {
+    "@eslint/js": "^9.7.0",
     "c8": "^10.1.2",
     "deno-node": "^0.0.5",
-    "eslint": "^9.7.0",
+    "typescript-eslint": "^7.16.1",
     "ya-test-library": "^0.0.2"
   },
   "dependencies": {
+    "@types/deep-equal": "^1.0.4",
     "@types/node": "^20.14.11",
+    "deep-equal": "^2.2.3",
+    "esm-resource": "^0.0.1",
     "tsx": "^4.16.2"
   }
 }
