@@ -15,5 +15,5 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm run test
-      - name: Verify code with ESLint
-        run: npm run eslint
+      - name: Verify code with linter
+        run: npm run lint
