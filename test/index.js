@@ -4,5 +4,5 @@ import { createBasicTestGroup } from "./basic.js";
 const runner = createNodeTestRunner();
 
 runner.run({
-    group: createBasicTestGroup()
+  group: createBasicTestGroup()
 });

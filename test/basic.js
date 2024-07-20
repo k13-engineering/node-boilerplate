@@ -4,10 +4,10 @@ import boilerplate from "../lib/index.js";
 const createBasicTestGroup = () => {
   return {
     groups: {
-      "boilerplate": {
+      boilerplate: {
 
         groups: {
-          "creation": {
+          creation: {
 
             tests: {
               "should provide a test message": () => {
