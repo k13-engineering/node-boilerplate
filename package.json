@@ -3,9 +3,13 @@
   "type": "module",
   "version": "0.0.1",
   "description": "Boilerplate project",
-  "main": "lib/index.js",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/lib/index.js",
   "scripts": {
-    "test": "c8 --reporter lcov --reporter html --reporter text --all tsx test/index.js",
+    "build": "rm -rf dist/ && deno-node-build --root . --out dist/ --entry lib/index.ts",
+    "test": "c8 --reporter lcov --reporter html --reporter text --all --src lib/ tsx test/index.js",
     "eslint": "eslint ."
   },
   "repository": {
