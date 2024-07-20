@@ -1,5 +1,5 @@
-import assert from "assert";
-import boilerplate from "../lib/index.js";
+import assert from "node:assert";
+import boilerplate from "../lib/index.ts";
 
 const createBasicTestGroup = () => {
   return {
@@ -18,7 +18,7 @@ const createBasicTestGroup = () => {
 
           }
         }
-        
+
       }
     }
   };

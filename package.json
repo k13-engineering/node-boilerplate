@@ -5,7 +5,7 @@
   "description": "Boilerplate project",
   "main": "lib/index.js",
   "scripts": {
-    "test": "c8 --reporter lcov --reporter html --reporter text --all node test/index.js",
+    "test": "c8 --reporter lcov --reporter html --reporter text --all tsx test/index.js",
     "eslint": "eslint ."
   },
   "repository": {
@@ -26,5 +26,9 @@
     "c8": "^10.1.2",
     "eslint": "^9.7.0",
     "ya-test-library": "^0.0.2"
+  },
+  "dependencies": {
+    "@types/node": "^20.14.11",
+    "tsx": "^4.16.2"
   }
 }
