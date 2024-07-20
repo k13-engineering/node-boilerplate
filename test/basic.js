@@ -1,6 +1,3 @@
-/* global describe */
-/* global it */
-
 import assert from "assert";
 import boilerplate from "../lib/index.js";
 
