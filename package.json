@@ -31,7 +31,7 @@
     "@types/deep-equal": "^1.0.4",
     "@types/node": "^20.14.11",
     "c8": "^10.1.2",
-    "deno-node": "^0.0.6",
+    "deno-node": "^0.0.7",
     "tsx": "^4.16.2",
     "typescript-eslint": "^7.16.1",
     "ya-test-library": "^0.0.3"
