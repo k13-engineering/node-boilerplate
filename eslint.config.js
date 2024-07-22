@@ -51,7 +51,10 @@ export default tseslint.config(
       "no-underscore-dangle": "error",
       "no-negated-condition": "error",
       "no-use-before-define": "error",
-      "no-shadow": "error",
+
+      "no-shadow": "off",
+      "@typescript-eslint/no-shadow": "error",
+
       "no-labels": "error",
       "no-throw-literal": "error",
       "default-case": "error",
@@ -65,7 +68,8 @@ export default tseslint.config(
       "no-new-wrappers": "error",
       "no-useless-concat": "error",
 
-      "no-unused-vars": ["error", {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": ["error", {
         ignoreRestSiblings: true,
       }],
 
