@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import nodePath from "node:path";
-// @ts-ignore
+// @ts-expect-error missing types
 import { loadAsUtf8String } from "esm-resource";
 import deepEqual from "deep-equal";
 
@@ -40,8 +40,9 @@ for (const filename of filesToCheck) {
 
   try {
     content = await fs.promises.readFile(fullPath, "utf-8");
-  } catch (ex: any) {
-    if (ex.code === "ENOENT") {
+  } catch (ex: unknown) {
+
+    if (typeof ex === "object" && ex !== null && "code" in ex && (ex as { code: unknown }).code === "ENOENT") {
       console.log(`${filename} does not exist`);
       continue;
     }
