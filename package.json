@@ -38,6 +38,6 @@
   },
   "dependencies": {
     "deep-equal": "^2.2.3",
-    "esm-resource": "^0.0.2"
+    "esm-resource": "^0.0.3"
   }
 }
