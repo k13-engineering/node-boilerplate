@@ -18,6 +18,7 @@ const filesToCheck = [
   "tsconfig.json",
   "eslint.config.js",
   ".github/workflows/ci.yml",
+  ".github/workflows/npm-publish.yml",
 ];
 
 let ourFileContents: { [key: string]: string } = {};
