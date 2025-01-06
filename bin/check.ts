@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import nodePath from "node:path";
-// @ts-expect-error missing types
-import { loadAsUtf8String } from "esm-resource";
+import { loadAsBlob } from "esm-resource";
 import deepEqual from "deep-equal";
 
 // const folderToCheck = "/home/simon/projects/wurzel";
@@ -17,7 +16,8 @@ const filesToCheck = [
 let ourFileContents: { [key: string]: string } = {};
 
 const loadOurFileAsUtf8String = async ({ filename }: { filename: string }) => {
-  return await loadAsUtf8String({ importMeta: import.meta, filepath: nodePath.join("..", filename) });
+  const ourFileAsBlob = await loadAsBlob({ importMeta: import.meta, filepath: nodePath.join("..", filename) });
+  return await ourFileAsBlob.text();
 };
 
 for (const filename of filesToCheck) {
