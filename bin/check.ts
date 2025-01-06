@@ -3,8 +3,15 @@ import nodePath from "node:path";
 import { loadAsBlob } from "esm-resource";
 import deepEqual from "deep-equal";
 
-// const folderToCheck = "/home/simon/projects/wurzel";
-const folderToCheck = "/home/simon/projects/node-robust-streams";
+const args = process.argv.slice(2);
+
+if (args.length === 0) {
+  throw Error(`please provide a folder to check`);
+} else if (args.length > 1) {
+  throw Error(`too many arguments, only provide folder to check`);
+}
+
+const folderToCheck = args[0];
 
 const filesToCheck = [
   ".editorconfig",
