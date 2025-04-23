@@ -17,6 +17,7 @@
     "ya-test-library": "^0.0.3"
   },
   "dependencies": {
+    "@k13engineering/releasetool": "^0.0.1",
     "deep-equal": "^2.2.3",
     "esm-resource": "^0.0.3"
   }
