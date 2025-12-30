@@ -1,7 +1,6 @@
 {
   "name": "@k13engineering/boilerplate",
   "type": "module",
-  "version": "0.0.9",
   "description": "Boilerplate project",
   "files": [
     "dist"
