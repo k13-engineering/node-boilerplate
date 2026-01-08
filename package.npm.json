@@ -2,6 +2,9 @@
   "name": "@k13engineering/boilerplate",
   "type": "module",
   "description": "Boilerplate project",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],
