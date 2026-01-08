@@ -41,6 +41,9 @@ for (const filename of filesToCheck) {
 const ourPackageJsonAsString = await loadOurFileAsUtf8String({ filename: "package.json" });
 const ourPackageJson = JSON.parse(ourPackageJsonAsString);
 
+const ourPackageJsonNpmAsString = await loadOurFileAsUtf8String({ filename: "package.json.npm" });
+const ourPackageJsonNpm = JSON.parse(ourPackageJsonNpmAsString);
+
 for (const filename of filesToCheck) {
   const fullPath = nodePath.resolve(folderToCheck, filename);
 
@@ -68,6 +71,9 @@ for (const filename of filesToCheck) {
 const theirPackageJsonAsString = await fs.promises.readFile(nodePath.resolve(folderToCheck, "package.json"), "utf-8");
 const theirPackageJson = JSON.parse(theirPackageJsonAsString);
 
+const theirPackageJsonNpmAsString = await fs.promises.readFile(nodePath.resolve(folderToCheck, "package.json.npm"), "utf-8");
+const theirPackageJsonNpm = JSON.parse(theirPackageJsonNpmAsString);
+
 const checkDevDependency = ({ dependencyName }: { dependencyName: string }) => {
 
   return {
@@ -81,8 +87,6 @@ const devDependenciesToCheck = [
   "deno-node",
   "@eslint/js",
   "typescript-eslint",
-  "ya-test-library",
-  "tsx",
   "@types/node",
 ];
 
@@ -118,14 +122,11 @@ if (!deepEqual(theirPackageJson?.files, ourPackageJson.files)) {
   console.log(`files differ (${JSON.stringify(theirPackageJson?.files)} vs ${JSON.stringify(ourPackageJson.files)})`);
 }
 
-const requiredPackageJsonFields = [
+const requiredPackageJsonNpmFields = [
   "name",
-  "version",
   "author",
   "description",
   "main",
-  "devDependencies",
-  "dependencies",
   "repository",
   "author",
   "bugs",
@@ -133,8 +134,8 @@ const requiredPackageJsonFields = [
   "license",
 ];
 
-requiredPackageJsonFields.forEach((field) => {
-  if (theirPackageJson[field] === undefined) {
+requiredPackageJsonNpmFields.forEach((field) => {
+  if (theirPackageJsonNpm[field] === undefined) {
     console.log(`missing field in package.json '${field}'`);
   }
 });
@@ -145,8 +146,12 @@ const requiredScripts = [
   "lint",
 ];
 
-requiredScripts.forEach((script) => {
-  if (theirPackageJson.scripts[script] === undefined) {
-    console.log(`missing script in package.json '${script}'`);
-  }
-});
+if (theirPackageJson.scripts === undefined) {
+  console.log(`missing scripts in package.json`);
+} else {
+  requiredScripts.forEach((script) => {
+    if (theirPackageJson.scripts[script] === undefined) {
+      console.log(`missing script in package.json '${script}'`);
+    }
+  });
+}
