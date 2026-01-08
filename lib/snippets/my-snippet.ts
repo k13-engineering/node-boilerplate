@@ -1,0 +1,4 @@
+const createSnippetFunction = () => {
+};
+
+export { createSnippetFunction };
