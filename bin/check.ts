@@ -41,8 +41,8 @@ for (const filename of filesToCheck) {
 const ourPackageJsonAsString = await loadOurFileAsUtf8String({ filename: "package.json" });
 const ourPackageJson = JSON.parse(ourPackageJsonAsString);
 
-const ourPackageJsonNpmAsString = await loadOurFileAsUtf8String({ filename: "package.json.npm" });
-const ourPackageJsonNpm = JSON.parse(ourPackageJsonNpmAsString);
+// const ourPackageJsonNpmAsString = await loadOurFileAsUtf8String({ filename: "package.json.npm" });
+// const ourPackageJsonNpm = JSON.parse(ourPackageJsonNpmAsString);
 
 for (const filename of filesToCheck) {
   const fullPath = nodePath.resolve(folderToCheck, filename);
