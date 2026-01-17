@@ -19,7 +19,7 @@
     "boilerplate"
   ],
   "author": "Simon Kadisch",
-  "license": "Unlicense",
+  "license": "LGPL 2.1",
   "bugs": {
     "url": "https://github.com/k13-engineering/node-boilerplate/issues"
   },
