@@ -9,11 +9,12 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@k13engineering/releasetool": "^0.0.5",
     "@types/deep-equal": "^1.0.4",
     "@types/node": "^22.10.5",
     "c8": "^10.1.3",
     "deno-node": "^0.0.12",
-    "@k13engineering/releasetool": "^0.0.5",
+    "npm-check-updates": "^19.3.1",
     "tsx": "^4.19.2",
     "typescript-eslint": "^8.19.0",
     "ya-test-library": "^0.0.3"
