@@ -23,6 +23,5 @@
   "bugs": {
     "url": "https://github.com/k13-engineering/node-boilerplate/issues"
   },
-  "homepage": "https://github.com/k13-engineering/node-boilerplate#readme",
-  "devDependencies": {}
+  "homepage": "https://github.com/k13-engineering/node-boilerplate#readme"
 }
