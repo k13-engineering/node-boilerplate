@@ -6,7 +6,8 @@
     "type-check": "tsc --noEmit",
     "test": "c8 --reporter lcov --reporter html --reporter text --all --src lib/ --exclude lib/snippets/ --exclude test/ tsx test/index.js",
     "lint": "eslint .",
-    "update-deps": "npm-check-updates -u"
+    "update-deps": "npm-check-updates -u",
+    "update-template-deps": "npm-check-updates --packageFile package.template.json -u"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
