@@ -41,8 +41,8 @@ for (const filename of filesToCheck) {
 const ourPackageJsonAsString = await loadOurFileAsUtf8String({ filename: "package.json" });
 const ourPackageJson = JSON.parse(ourPackageJsonAsString);
 
-// const ourPackageJsonNpmAsString = await loadOurFileAsUtf8String({ filename: "package.json.npm" });
-// const ourPackageJsonNpm = JSON.parse(ourPackageJsonNpmAsString);
+const ourPackageJsonNpmAsString = await loadOurFileAsUtf8String({ filename: "package.npm.json" });
+const ourPackageJsonNpm = JSON.parse(ourPackageJsonNpmAsString);
 
 for (const filename of filesToCheck) {
   const fullPath = nodePath.resolve(folderToCheck, filename);
@@ -71,7 +71,7 @@ for (const filename of filesToCheck) {
 const theirPackageJsonAsString = await fs.promises.readFile(nodePath.resolve(folderToCheck, "package.json"), "utf-8");
 const theirPackageJson = JSON.parse(theirPackageJsonAsString);
 
-const theirPackageJsonNpmAsString = await fs.promises.readFile(nodePath.resolve(folderToCheck, "package.json.npm"), "utf-8");
+const theirPackageJsonNpmAsString = await fs.promises.readFile(nodePath.resolve(folderToCheck, "package.npm.json"), "utf-8");
 const theirPackageJsonNpm = JSON.parse(theirPackageJsonNpmAsString);
 
 const checkDevDependency = ({ dependencyName }: { dependencyName: string }) => {
@@ -88,6 +88,8 @@ const devDependenciesToCheck = [
   "@eslint/js",
   "typescript-eslint",
   "@types/node",
+  "@k13engineering/releasetool",
+  "npm-check-updates"
 ];
 
 for (const dependencyName of devDependenciesToCheck) {
@@ -118,8 +120,8 @@ for (const dependencyName of dependenciesToCheck) {
 }
 
 
-if (!deepEqual(theirPackageJson?.files, ourPackageJson.files)) {
-  console.log(`files differ (${JSON.stringify(theirPackageJson?.files)} vs ${JSON.stringify(ourPackageJson.files)})`);
+if (!deepEqual(theirPackageJsonNpm?.files, ourPackageJsonNpm.files)) {
+  console.log(`files differ (${JSON.stringify(theirPackageJsonNpm?.files)} vs ${JSON.stringify(ourPackageJsonNpm.files)})`);
 }
 
 const requiredPackageJsonNpmFields = [
@@ -144,6 +146,8 @@ const requiredScripts = [
   "test",
   "build",
   "lint",
+  "type-check",
+  "update-deps",
 ];
 
 if (theirPackageJson.scripts === undefined) {
