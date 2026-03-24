@@ -124,6 +124,10 @@ if (!deepEqual(theirPackageJsonNpm?.files, ourPackageJsonNpm.files)) {
   console.log(`files differ (${JSON.stringify(theirPackageJsonNpm?.files)} vs ${JSON.stringify(ourPackageJsonNpm.files)})`);
 }
 
+if (!deepEqual(theirPackageJsonNpm?.publishConfig, ourPackageJsonNpm.publishConfig)) {
+  console.log(`pushAccess differ (${JSON.stringify(theirPackageJsonNpm?.publishConfig)} vs ${JSON.stringify(ourPackageJsonNpm.publishConfig)})`);
+}
+
 const requiredPackageJsonNpmFields = [
   "name",
   "author",
