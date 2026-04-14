@@ -142,7 +142,7 @@ const requiredPackageJsonNpmFields = [
 
 requiredPackageJsonNpmFields.forEach((field) => {
   if (theirPackageJsonNpm[field] === undefined) {
-    console.log(`missing field in package.json '${field}'`);
+    console.log(`missing field in package.npm.json '${field}'`);
   }
 });
 
