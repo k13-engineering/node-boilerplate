@@ -167,15 +167,15 @@ const packageJsonNpm = {
   type: "module",
   description: answers.description,
   publishConfig: {
-    "access": "public"
+    access: "public"
   },
   files: [
     "dist"
   ],
   main: "dist/lib/index.js",
   repository: {
-    "type": "git",
-    "url": `git+${answers.repositoryUrl}`
+    type: "git",
+    url: `git+${answers.repositoryUrl}`
   },
   keywords: [
 
@@ -183,7 +183,7 @@ const packageJsonNpm = {
   author: answers.authorName,
   license: answers.license,
   bugs: {
-    "url": answers.bugsUrl
+    url: answers.bugsUrl
   },
   homepage: answers.homepageUrl,
 };
