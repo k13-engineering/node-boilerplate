@@ -82,6 +82,7 @@ export default tseslint.config(
 
       "max-depth": ["error", 4],
       "arrow-parens": "error",
+      "arrow-body-style": ["error", "always"],
       "no-confusing-arrow": "error",
       "prefer-const": "error",
       "rest-spread-spacing": ["error", "never"],
