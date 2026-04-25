@@ -135,10 +135,10 @@ let packageJson = {
 const devDependenciesToAdd = [
   "@eslint/js",
   "@k13engineering/releasetool",
+  "@k13engineering/eslint-rules",
   "@types/node",
   "c8",
   "deno-node",
-  "typescript-eslint",
 ];
 
 devDependenciesToAdd.forEach((depName) => {

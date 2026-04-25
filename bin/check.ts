@@ -310,9 +310,9 @@ const main = async (): Promise<{ exitCode: number }> => {
     "deno-node",
     "@eslint/js",
     "typescript",
-    "typescript-eslint",
     "@types/node",
     "@k13engineering/releasetool",
+    "@k13engineering/eslint-rules",
   ];
 
   const optionalDevDependenciesToCheck = [
