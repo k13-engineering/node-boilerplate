@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import boilerplate from "../lib/index.ts";
+import { create } from "../lib/index.ts";
 
 const createBasicTestGroup = () => {
   return {
@@ -11,7 +11,7 @@ const createBasicTestGroup = () => {
 
             tests: {
               "should provide a test message": () => {
-                const inst = boilerplate.create();
+                const inst = create();
                 assert.equal(inst.message, "Hello, World!");
               }
             }

@@ -6,6 +6,6 @@ const create = () => {
   };
 };
 
-export default {
+export {
   create
 };

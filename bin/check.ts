@@ -480,4 +480,5 @@ const main = async (): Promise<{ exitCode: number }> => {
 };
 
 const { exitCode } = await main();
+// eslint-disable-next-line immutable/no-mutation
 process.exitCode = exitCode;
