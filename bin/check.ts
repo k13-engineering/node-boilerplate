@@ -320,6 +320,10 @@ const main = async (): Promise<{ exitCode: number }> => {
     "npm-check-updates"
   ];
 
+  const forbiddenDevDependencies: string[] = [
+    "typescript-eslint"
+  ];
+
   for (const dependencyName of devDependenciesToCheck) {
     const { theirs, ours } = checkDevDependency({ dependencyName });
 
@@ -357,6 +361,19 @@ const main = async (): Promise<{ exitCode: number }> => {
     }
   }
 
+  for (const dependencyName of forbiddenDevDependencies) {
+    const { theirs } = checkDevDependency({ dependencyName });
+
+    if (theirs !== undefined) {
+      reportArtifactMismatch({
+        artifact: `forbidden devDependency ${dependencyName}`,
+        actual: theirs,
+        expected: undefined,
+        solution: `Remove ${dependencyName} from devDependencies in package.json, as it should not be used in this package.`,
+      });
+    }
+  }
+
   const checkDependency = ({ dependencyName }: { dependencyName: string }) => {
     return {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -385,6 +402,21 @@ const main = async (): Promise<{ exitCode: number }> => {
     }
   }
 
+  const forbiddenDependencies: string[] = [
+  ];
+
+  for (const dependencyName of forbiddenDependencies) {
+    const { theirs } = checkDependency({ dependencyName });
+
+    if (theirs !== undefined) {
+      reportArtifactMismatch({
+        artifact: `forbidden dependency ${dependencyName}`,
+        actual: theirs,
+        expected: undefined,
+        solution: `Remove ${dependencyName} from dependencies in package.json, as it should be a devDependency if used at all.`,
+      });
+    }
+  }
 
   if (!deepEqual(theirPackageJsonNpm?.files, ourPackageJsonNpm.files)) {
     reportArtifactMismatch({
