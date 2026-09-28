@@ -122,7 +122,7 @@ let packageJson = {
   main: answers.main,
   scripts: {
     build: "rm -rf dist/ && deno-node-build --root . --out dist/ --entry lib/index.ts",
-    test: "c8 --reporter lcov --reporter html --reporter text --all --src lib/ node test/index.ts",
+    test: "c8 --reporter lcov --reporter html --reporter text --all --src lib/ --exclude 'lib/**/*.spec.ts' mocha 'lib/**/*.spec.ts'",
     lint: "eslint ."
   },
   devDependencies: {
@@ -136,9 +136,11 @@ const devDependenciesToAdd = [
   "@eslint/js",
   "@k13engineering/releasetool",
   "@k13engineering/eslint-rules",
+  "@types/mocha",
   "@types/node",
   "c8",
   "deno-node",
+  "mocha",
 ];
 
 devDependenciesToAdd.forEach((depName) => {
@@ -222,13 +224,10 @@ if (nodeFs.existsSync(targetLibIndexPath)) {
 }
 nodeFs.writeFileSync(targetLibIndexPath, `\n`, { encoding: "utf-8" });
 
-const targetTestFolder = nodePath.join(packageFolder, "test");
-nodeFs.mkdirSync(targetTestFolder, { recursive: true });
-
-const targetTestIndexPath = nodePath.join(targetTestFolder, "index.ts");
-if (nodeFs.existsSync(targetTestIndexPath)) {
-  throw Error(`test/index.ts already exists in ${packageFolder}`);
+const targetLibIndexSpecPath = nodePath.join(targetLibFolder, "index.spec.ts");
+if (nodeFs.existsSync(targetLibIndexSpecPath)) {
+  throw Error(`lib/index.spec.ts already exists in ${packageFolder}`);
 }
-nodeFs.writeFileSync(targetTestIndexPath, ``);
+nodeFs.writeFileSync(targetLibIndexSpecPath, `\n`, { encoding: "utf-8" });
 
 console.log(`Initialized package in folder ${packageFolder}`);
