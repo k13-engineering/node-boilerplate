@@ -13,10 +13,35 @@ type TWizardData = {
   homepageUrl: string;
 }
 
+const processAnswer = ({
+  key,
+  answer,
+  suggestion
+}: {
+  key: string,
+  answer: string,
+  suggestion: string
+}) => {
+  if (answer.length === 0) {
+    return suggestion;
+  }
+
+  const answerTrimmed = answer.trim();
+  if (answerTrimmed.length === 0) {
+    throw Error(`Please provide a valid value for ${key}`);
+  }
+
+  return answerTrimmed;
+};
+
 const createInitWizard = ({
   suggestions,
+  input = process.stdin,
+  output = process.stdout,
 }: {
-  suggestions: TWizardData
+  suggestions: TWizardData,
+  input?: NodeJS.ReadableStream,
+  output?: NodeJS.WritableStream,
 }) => {
 
   const prompt = async () => {
@@ -24,35 +49,24 @@ const createInitWizard = ({
     let answers: TWizardData = suggestions;
 
     const rl = nodeReadline.promises.createInterface({
-      input: process.stdin,
-      output: process.stdout,
+      input,
+      output,
     });
 
     const keys = Object.keys(suggestions) as (keyof TWizardData)[];
 
-    for (const key of keys) {
-      const answer = await rl.question(`${key} (${suggestions[key]}): `);
-      if (answer.length === 0) {
-        answers = {
-          ...answers,
-          [key]: suggestions[key],
-        };
-      } else {
-
-        const answerTrimmed = answer.trim();
-        if (answerTrimmed.length === 0) {
-          console.log(`Please provide a valid value for ${key}`);
-          process.exit(1);
-        }
+    try {
+      for (const key of keys) {
+        const answer = await rl.question(`${key} (${suggestions[key]}): `);
 
         answers = {
           ...answers,
-          [key]: answerTrimmed,
+          [key]: processAnswer({ key, answer, suggestion: suggestions[key] }),
         };
       }
-    };
-
-    rl.close();
+    } finally {
+      rl.close();
+    }
 
     return answers;
   };
