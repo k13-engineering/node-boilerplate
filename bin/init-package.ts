@@ -128,7 +128,8 @@ let packageJson = {
       "mocha 'lib/**/*.spec.ts'"
     ].join(" "),
     "lint": "eslint .",
-    "update-deps": "npm-check-updates -u"
+    // TypeScript 7 lacks the JavaScript API the toolchain relies on
+    "update-deps": "npm-check-updates -u --reject typescript && npm-check-updates -u --target minor --filter typescript"
   },
   devDependencies: {
     // filled below

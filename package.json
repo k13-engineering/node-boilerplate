@@ -6,8 +6,8 @@
     "type-check": "tsc --noEmit",
     "test": "c8 --100 --reporter lcov --reporter html --reporter text --all --src lib/ --exclude lib/snippets/ --exclude 'lib/**/*.spec.ts' mocha 'lib/**/*.spec.ts'",
     "lint": "eslint .",
-    "update-deps": "npm-check-updates -u",
-    "update-template-deps": "npm-check-updates --packageFile package.template.json -u"
+    "update-deps": "npm-check-updates -u --reject typescript && npm-check-updates -u --target minor --filter typescript",
+    "update-template-deps": "npm-check-updates --packageFile package.template.json -u --reject typescript && npm-check-updates --packageFile package.template.json -u --target minor --filter typescript"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

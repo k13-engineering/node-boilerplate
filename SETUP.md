@@ -56,6 +56,10 @@ What it checks:
     `@k13engineering/releasetool`.
   - The scripts `test`, `build`, `lint`, `type-check` and `update-deps` are
     required.
+  - TypeScript stays on 6.x: TypeScript 7 no longer provides the JavaScript
+    API that typescript-eslint, ts-blank-space and releasetool rely on. The
+    `update-deps` script therefore updates TypeScript only within its major
+    version.
   - Package metadata (`name`, `author`, `description`, `repository`, `bugs`,
     `homepage`, `license`) must not be in this file.
 - **`package.npm.json`:** this file holds the package metadata listed above,
