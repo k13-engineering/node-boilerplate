@@ -121,7 +121,7 @@ let packageJson = {
   type: "module",
   main: answers.main,
   scripts: {
-    "build": "rm -rf dist/ && deno-node-build --root . --out dist/ --entry lib/index.ts",
+    "build": "rm -rf dist/ && releasetool build --root . --out dist/ --entry lib/index.ts",
     "type-check": "tsc --noEmit",
     "test": [
       "c8 --100 --reporter lcov --reporter html --reporter text --all --src lib/ --exclude 'lib/**/*.spec.ts'",
@@ -144,7 +144,6 @@ const devDependenciesToAdd = [
   "@types/mocha",
   "@types/node",
   "c8",
-  "deno-node",
   "mocha",
   "npm-check-updates",
   "typescript",

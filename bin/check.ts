@@ -307,7 +307,6 @@ const main = async (): Promise<{ exitCode: number }> => {
   };
 
   const devDependenciesToCheck = [
-    "deno-node",
     "@eslint/js",
     "typescript",
     "@types/node",
@@ -321,7 +320,9 @@ const main = async (): Promise<{ exitCode: number }> => {
   ];
 
   const forbiddenDevDependencies: string[] = [
-    "typescript-eslint"
+    "typescript-eslint",
+    // replaced by "releasetool build"
+    "deno-node",
   ];
 
   for (const dependencyName of devDependenciesToCheck) {

@@ -2,7 +2,7 @@
   "type": "module",
   "main": "lib/index.ts",
   "scripts": {
-    "build": "rm -rf dist/ && deno-node-build --root . --out dist/ --entry lib/index.ts",
+    "build": "rm -rf dist/ && releasetool build --root . --out dist/ --entry lib/index.ts",
     "type-check": "tsc --noEmit",
     "test": "c8 --100 --reporter lcov --reporter html --reporter text --all --src lib/ --exclude 'lib/**/*.spec.ts' mocha 'lib/**/*.spec.ts'",
     "lint": "eslint .",
@@ -15,7 +15,6 @@
     "@types/mocha": "^10.0.10",
     "@types/node": "^26.6.4",
     "c8": "^12.0.0",
-    "deno-node": "^0.0.12",
     "mocha": "^12.0.3",
     "npm-check-updates": "^23.1.0",
     "typescript": "^6.0.3"

@@ -51,7 +51,9 @@ What it checks:
     boilerplate.
   - `c8` and `npm-check-updates` are optional, but if present, their versions
     must also match.
-  - Some packages are not allowed, for example `typescript-eslint`.
+  - Some packages are not allowed, for example `typescript-eslint`, or
+    `deno-node`, which is replaced by `releasetool build` from
+    `@k13engineering/releasetool`.
   - The scripts `test`, `build`, `lint`, `type-check` and `update-deps` are
     required.
   - Package metadata (`name`, `author`, `description`, `repository`, `bugs`,
