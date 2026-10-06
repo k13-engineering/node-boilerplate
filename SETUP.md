@@ -59,6 +59,9 @@ What it checks:
 - **`package.npm.json`:** this file holds the package metadata listed above,
   plus `main`. Its `files` and `publishConfig` must match the boilerplate. At
   publish time, the release workflow merges it into `package.json`.
+- **Releases are staged.** The release workflow runs `npm stage publish`, so
+  a pushed tag only stages the package on npm. A maintainer has to approve it
+  with `npm stage approve <stage-id>` before it can be installed.
 
 ## 2. Unit tests: mocha and c8
 
