@@ -121,10 +121,13 @@ let packageJson = {
   type: "module",
   main: answers.main,
   scripts: {
-    build: "rm -rf dist/ && deno-node-build --root . --out dist/ --entry lib/index.ts",
+    "build": "rm -rf dist/ && deno-node-build --root . --out dist/ --entry lib/index.ts",
     "type-check": "tsc --noEmit",
-    test: "c8 --reporter lcov --reporter html --reporter text --all --src lib/ --exclude 'lib/**/*.spec.ts' mocha 'lib/**/*.spec.ts'",
-    lint: "eslint .",
+    "test": [
+      "c8 --100 --reporter lcov --reporter html --reporter text --all --src lib/ --exclude 'lib/**/*.spec.ts'",
+      "mocha 'lib/**/*.spec.ts'"
+    ].join(" "),
+    "lint": "eslint .",
     "update-deps": "npm-check-updates -u"
   },
   devDependencies: {
@@ -222,16 +225,22 @@ simpleFilesToCopy.forEach((fileName) => {
 const targetLibFolder = nodePath.join(packageFolder, "lib");
 nodeFs.mkdirSync(targetLibFolder, { recursive: true });
 
-const targetLibIndexPath = nodePath.join(targetLibFolder, "index.ts");
-if (nodeFs.existsSync(targetLibIndexPath)) {
-  throw Error(`lib/index.ts already exists in ${packageFolder}`);
-}
-nodeFs.writeFileSync(targetLibIndexPath, `\n`, { encoding: "utf-8" });
+// start with a tested example module, so the package passes the coverage
+// requirements of the test script right away
+const exampleFilesToCopy = [
+  "lib/index.ts",
+  "lib/index.spec.ts",
+];
 
-const targetLibIndexSpecPath = nodePath.join(targetLibFolder, "index.spec.ts");
-if (nodeFs.existsSync(targetLibIndexSpecPath)) {
-  throw Error(`lib/index.spec.ts already exists in ${packageFolder}`);
-}
-nodeFs.writeFileSync(targetLibIndexSpecPath, `\n`, { encoding: "utf-8" });
+exampleFilesToCopy.forEach((fileName) => {
+  const sourceFilePath = nodePath.join(boilerplatePackageFolder, fileName);
+  const targetFilePath = nodePath.join(packageFolder, fileName);
+
+  if (nodeFs.existsSync(targetFilePath)) {
+    throw Error(`${fileName} already exists in ${packageFolder}`);
+  }
+
+  nodeFs.copyFileSync(sourceFilePath, targetFilePath);
+});
 
 console.log(`Initialized package in folder ${packageFolder}`);

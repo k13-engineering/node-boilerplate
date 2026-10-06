@@ -95,9 +95,11 @@ Coverage does not include spec files. It covers only the real sources in
 ### The `test` script
 
 ```json
-"test": "c8 --reporter lcov --reporter html --reporter text --all --src lib/ --exclude 'lib/**/*.spec.ts' mocha 'lib/**/*.spec.ts'"
+"test": "c8 --100 --reporter lcov --reporter html --reporter text --all --src lib/ --exclude 'lib/**/*.spec.ts' mocha 'lib/**/*.spec.ts'"
 ```
 
+- `--100` makes the script fail unless lines, branches, functions and
+  statements are all covered to 100%.
 - `mocha 'lib/**/*.spec.ts'` runs every spec file. Keep the quotes so that
   mocha expands the glob, not the shell.
 - `--exclude 'lib/**/*.spec.ts'` keeps spec files out of the coverage report.
